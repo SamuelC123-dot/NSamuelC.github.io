@@ -176,6 +176,7 @@
                         <div id="modalCategory" class="category-label mb-2"></div>
                         <h3 id="modalTitle" class="fw-bold text-white mb-3"></h3>
                         <p id="modalDesc" class="text-dim"></p>
+                        <p id="modallink" class="text-dim"></p>
                     </div>
                 </div>
             </div>
@@ -197,7 +198,8 @@
         "title": "Reynolds number calculator",
         "category": "Fluid flow",
         "image": "reynoldsCal.png",
-        "description": "A web app for the calculation of the reynolds number of fluids <a href='https://samuelc123-dot.github.io/Reynolds-number-calculator.github.io/' target='_blank' class='text-info'>Go to site</a>"
+        "description": "A web app for the calculation of the reynolds number of fluids",
+        "link":"https://samuelc123-dot.github.io/Reynolds-number-calculator.github.io/"
     }
 ];
 
@@ -205,7 +207,7 @@
             const projectCol = document.createElement('div');
             projectCol.className = 'col-md-6 col-lg-4';
             projectCol.innerHTML = `
-                <div class="project-card h-100 shadow-sm" onclick="showDetails('${project.image}', '${project.title}', '${project.description}', '${project.category}')">
+                <div class="project-card h-100 shadow-sm" onclick="showDetails('${project.image}', '${project.title}', '${project.description}', '${project.category}','${project.link}')">
                     <img src="${project.image}" class="card-img-top" alt="${project.title}">
                     <div class="card-body p-4">
                         <span class="category-label">${project.category}</span>
@@ -222,11 +224,12 @@
     window.addEventListener('DOMContentLoaded', initPortfolio);
      /* Updates and opens the project modal
      */
-    function showDetails(img, title, desc, cat) {
+    function showDetails(img, title, desc, cat,link) {
         document.getElementById('modalImg').src = img;
         document.getElementById('modalTitle').innerText = title;
-        document.getElementById('modalDesc').innerHTML = desc;
+        document.getElementById('modalDesc').innerText = desc;
         document.getElementById('modalCategory').innerText = cat;
+        document.getElementById('modallink').innerHTML="<a href="+link+">Go to site</a>";
         
         const myModal = new bootstrap.Modal(document.getElementById('projectModal'));
         myModal.show();
